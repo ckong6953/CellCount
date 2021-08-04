@@ -64,3 +64,5 @@ class CreateTable extends React.Component {
 ReactDOM.render(
     <FormSubmit />, document.getElementById("cell-count")
 );
+
+// Testing if the rebase and working from the Mac works
