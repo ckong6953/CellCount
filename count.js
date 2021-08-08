@@ -36,27 +36,109 @@ class FormSubmit extends React.Component {
 class CreateTable extends React.Component {
     constructor (props){
         super (props);
+        this.state = {
+            countOne: 0,
+            countTwo: 0,
+            countThree: 0,
+            countFour: 0,
+            dilFac: 0,
+            avgCount: 0,
+        }
+
+        this.handleDilution = this.handleDilution.bind(this);
+        this.handleOneChange = this.handleOneChange.bind(this);
+        this.handleTwoChange = this.handleTwoChange.bind(this);
+        this.handleThreeChange = this.handleThreeChange.bind(this);
+        this.handleFourChange = this.handleFourChange.bind(this);
     }
 
-    render(){
-        let tableStatement = [];
-        tableStatement.push(<p>Please fill the following tables with the name, raw cell counts, and dilution factor:</p>)
-        for (let i = 1; i <= this.props.amount; i++ ){
-            const tableID = "table-" + i;
-            const tableHeader = "header-" + i;
-            const rowHeader = "rowHeader-" + i;
-            const tableTitle = "title-" + i;
-            const tableBody = "body-" + i;
-            const oneCount = "count-1-" + i;
-            const twoCount = "count-2-" + i;
-            const threeCount = "count-3-" + i;
-            const fourCount = "count-4-" + i;
+    handleDilution(event){
+        this.setState({dilFac: event.target.value})
+    }
 
-            tableStatement.push(
-                <h1 key={tableID}>yuh</h1>
-            );
+    handleOneChange(event){
+        this.setState({countOne: event.target.value})
+    }
+
+    handleTwoChange(event){
+        this.setState({countTwo: event.target.value})
+    }
+
+    handleThreeChange(event){
+        this.setState({countThree: event.target.value})
+    }
+
+    handleFourChange(event){
+        this.setState({countFour: event.target.value});
+    }
+    
+    render(){
+        let tableList = [];
+        let rows = []
+        for (let i = 0; i < 6; i++){
+            const rowID = "row-"+i;
+            let cells = [];
+            for (let j = 0; j < 2; j++){
+                const cellID = "cell-" + i + "-" + j;
+                switch (j){
+                    case 0:
+                        switch (i){
+                            case 0:
+                                cells.push(<td key={cellID}>Dilution Factor</td>);
+                                break;
+                            case 1:
+                                cells.push(<td key={cellID}>Raw Count 1</td>);
+                                break;
+                            case 2:
+                                cells.push(<td key={cellID}>Raw Count 2</td>);
+                                break;
+                            case 3:
+                                cells.push(<td key={cellID}>Raw Count 3</td>);
+                                break;
+                            case 4:
+                                cells.push(<td key={cellID}>Raw Count 4</td>);
+                                break;
+                            case 5:
+                                cells.push(<td key={cellID}>Average</td>);
+                        }
+                        break;
+                    case 1:
+                        switch(i){
+                        case 0:
+                            cells.push(<td key={cellID}>
+                                <form> <input type="number" placeholder="0" min="0" value={this.state.dilFac}
+                                onChange={this.handleDilution}/> </form>
+                                </td>);
+                            break;
+                        case 1:
+                            cells.push(<td key={cellID}><input type="number" placeholder="0" min="0" value={this.state.countOne} onChange={this.handleOneChange}/></td>);
+                            break;  
+                        case 2:
+                            cells.push(<td key={cellID}><input type="number" placeholder="0" min="0" value={this.state.countTwo} onChange={this.handleTwoChange}/></td>) ;
+                            break;
+                        case 3: 
+                            cells.push(<td key={cellID}><input type="number" placeholder="0" min="0" value={this.state.countThree} onChange={this.handleThreeChange}/></td>)
+                            break;
+                        case 4: 
+                            cells.push(<td key={cellID}><input type="number" placeholder="0" min="0" value={this.state.countFour} onChange={this.handleFourChange}/></td>)  
+                            break;
+                        case 5:
+                            cells.push(<td key={cellID}>{this.state.avgCount}</td>)  
+                        }      
+                }
+            }
+            rows.push(<tr key={rowID}>{cells}</tr>);
         }
-        return tableStatement;
+
+        for (let i = 0; i < this.props.amount; i++){
+            const tableID = "table-" + i;
+            const headerID = "tableHeader-" + i;
+            tableList.push(<table key={tableID}>
+                <thead key={headerID}><tr><td colSpan="2">Blank Table {i+1}</td></tr></thead>
+                <tbody>{rows}</tbody>
+                </table>);
+        }
+        return tableList;
     }
 }
 
@@ -64,6 +146,3 @@ class CreateTable extends React.Component {
 ReactDOM.render(
     <FormSubmit />, document.getElementById("cell-count")
 );
-
-// Testing if the rebase and working from the Mac works
-// Huh how
