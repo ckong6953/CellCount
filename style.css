@@ -5,3 +5,29 @@ table, td, th{
 thead{
     text-align: center;
 }
+
+.inputTable{
+    width: 50%;
+    text-align: center;
+}
+
+.tableTitle {
+    width: 70%;
+}
+
+.results-container{
+    width: 50%;
+    text-align: center;
+    justify-content: center;
+}
+
+.results-table{
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.dataTable{
+    display: flex;
+    flex-wrap: wrap;
+}
