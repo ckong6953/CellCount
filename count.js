@@ -15,7 +15,7 @@ class FormSubmit extends React.Component {
 
     handleSubmit(event){
         let tables = []
-        tables.push(<p key="instructions">Please fill out the sample name as well as the respective dilution factor and observed raw cell counts in the fields below. These are utilized to calculate the average counts as well as the amount of cells found per volume in milliliters. If fields are failing tp update, please press enter after entering a field value. Once finished, please click the "Submit Table(s)" button:</p>)
+        tables.push(<p className="input-instructions" key="instructions">Please fill out the sample name as well as the respective dilution factor and observed raw cell counts in the fields below. These are utilized to calculate the average counts as well as the amount of cells found per volume in milliliters. At this time, clicking any "submit" button will <strong><u>PERMANENTLY FIX</u></strong> values; therefore, if you need to make changes make a new table, or reset the page. Once finished, please click the "Submit Table" button:</p>)
         for (let i = 0; i < this.state.value; i++){
             const tableId = "table-"+i
             tables.push(<CreateTable key={tableId} tableID={i}/>);
@@ -325,11 +325,11 @@ class CreateResults extends React.Component {
         const totalResults = "total-results-" + this.props.resultsID;
         const addResults = "add-results-" + this.props.resultsID;
 
-        return <table  className="results-table" key = {this.props.title}>
+        return <table  className="results-table" key = {this.props.data.title}>
             <thead key ={tableHeader}>
                 <tr key={headerCol}>
                     <td key={headerRow} colSpan="3">
-                        {this.props.title} Measurements
+                        Measurements for: {this.props.data.title}
                     </td>
                 </tr>
             </thead>

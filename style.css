@@ -1,5 +1,10 @@
+*{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 table, td, th{
     border: 1px solid black;
+    background-color: #D7D7D7;
 }
 
 thead{
@@ -19,6 +24,7 @@ thead{
     width: 50%;
     text-align: center;
     justify-content: center;
+    font-size: large;
 }
 
 .results-table{
@@ -31,3 +37,63 @@ thead{
     display: flex;
     flex-wrap: wrap;
 }
+
+header {
+    background-color: #4B9CD3;
+    padding: 30px;
+    text-align: center;
+    font-size: 60px;
+    color: white;
+}
+
+body{
+    background-color: #B9B9B9;
+}
+
+#about-count{
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    font-size: large;
+}
+
+#cell-count{
+    width: 60%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+.input-instructions{
+    width: 60%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: large;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+footer {
+    position: relative;
+    width: 100%;
+    bottom: 0;
+    color: white;
+    background-color: #4B9CD3;
+    font-size: large; 
+    text-align: center;
+    margin: auto;
+    height: 30px;
+ }
+
+ .tableContainer{
+    margin-bottom: 30px;
+    font-size: large;
+ }
+
+ button, label {
+    font-size: large;
+ }
